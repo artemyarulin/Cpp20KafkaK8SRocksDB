@@ -24,4 +24,10 @@ real	0m2.571s
 user	0m2.179s
 ```
 
-- Kubernetes HTTP health check without dependencies with pure [sockets](http.cppm). For Kafka consumer we don't usually need HTTP stack, but k8s health check is still a must
+- Kubernetes HTTP health check without dependencies with pure [sockets](http.cpp). For Kafka consumer we don't usually need HTTP stack, but k8s health check is still a must
+
+- Alpine based Docker image
+```
+$ docker build . -t img > /dev/null && docker images | grep img
+img                                       latest                480ccc17d485        17 minutes ago      8.96MB
+```
