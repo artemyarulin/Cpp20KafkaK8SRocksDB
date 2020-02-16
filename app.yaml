@@ -1,0 +1,43 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: app
+spec:
+  updateStrategy:
+    type: RollingUpdate
+  serviceName: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: [IMAGE]
+          resources:
+            requests:
+              memory: '10Mi'
+              cpu: '500m'
+            limits:
+              memory: '100Mi'
+              cpu: '1500m'
+          volumeMounts:
+            - mountPath: /data
+              name: data
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 1Gi
