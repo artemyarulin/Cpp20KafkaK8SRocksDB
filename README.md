@@ -29,5 +29,5 @@ user	0m2.179s
 - Alpine based Docker image
 ```
 $ docker build . -t img > /dev/null && docker images | grep img
-img                                       latest                480ccc17d485        17 minutes ago      8.96MB
+img    latest    480ccc17d485    Less than a second ago    8.96MB
 ```
