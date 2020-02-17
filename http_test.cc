@@ -4,10 +4,10 @@
 import http;
 
 TEST_CASE("http health check") {
-   Http h = {};
-   h.Start(8080);
+   Http h(8080, [](std::string m) { });
+   h.Start();
    h.Stop();
 
-   h.Start(8080);
+   h.Start();
    h.Stop();
 }
