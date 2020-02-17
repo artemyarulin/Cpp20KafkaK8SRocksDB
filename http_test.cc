@@ -1,5 +1,6 @@
 #include "doctest.h"
 #include <iostream>
+#include <functional>
 
 import http;
 

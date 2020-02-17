@@ -2,6 +2,7 @@
 #include <csignal>
 #include <mutex>
 #include <time.h>
+#include <functional>
 
 import http;
 

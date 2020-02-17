@@ -9,6 +9,7 @@
 #include <fstream>
 #include <thread>
 #include <cassert>
+#include <functional>
 
 export module http;
 
