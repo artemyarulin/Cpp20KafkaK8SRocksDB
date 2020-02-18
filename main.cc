@@ -5,6 +5,7 @@
 #include <functional>
 
 import http;
+import storage;
 
 std::mutex m;
 
@@ -15,6 +16,7 @@ int main() {
   };
   log("Started");
   Http server(8080, log);
+  Storage db("/tmp/db", log);
   server.Start();
   std::signal(SIGTERM, [](int s) { m.unlock(); });
   std::signal(SIGINT, [](int s) { m.unlock(); });
@@ -23,5 +25,6 @@ int main() {
   m.lock();
   log("SIGTERM received, stopping");
   server.Stop();
+  db.Close();
   log("Stoped");
 }
