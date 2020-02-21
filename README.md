@@ -38,7 +38,6 @@ img    latest    480ccc17d485    Less than a second ago    8.96MB
 - [ ] Logger - glog looks nice with stacktraces and `CHECK` macros which is much better than assert (std::cout is not thread safe)
 - [ ] googletest - doctest is nice, but googletest is a mainstream, worth checking that at least
 - [ ] google benchmark - looks solid. Overall I guess adopting google set of C++ tools is not a bad idea
-- [ ] Style, linter, formatter, etc. - important but I worry how many tools supports C++20 modules
 - [ ] CMake is a community choice, replace hand crafted make script with that
 - [ ] Socket based health checks passes k8s check, but it logs warnings as it doesn't consume the request
 - [ ] fmt string library is very much desired

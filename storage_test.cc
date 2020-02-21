@@ -1,7 +1,8 @@
-#include "doctest.h"
-#include <iostream>
-#include <functional>
 #include <cassert>
+#include <functional>
+#include <iostream>
+
+#include "doctest.h"
 
 import storage;
 

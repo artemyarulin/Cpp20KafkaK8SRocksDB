@@ -1,8 +1,9 @@
-#include <iostream>
-#include <csignal>
-#include <mutex>
 #include <time.h>
+
+#include <csignal>
 #include <functional>
+#include <iostream>
+#include <mutex>
 
 import http;
 import storage;
@@ -18,8 +19,8 @@ int main() {
   Http server(8080, log);
   Storage db("/tmp/db", log);
   server.Start();
-  std::signal(SIGTERM, [](int s) { m.unlock(); });
-  std::signal(SIGINT, [](int s) { m.unlock(); });
+  std::signal(SIGTERM, [](int) { m.unlock(); });
+  std::signal(SIGINT, [](int) { m.unlock(); });
   m.lock();
 
   m.lock();

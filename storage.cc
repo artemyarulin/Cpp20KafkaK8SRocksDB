@@ -8,9 +8,7 @@ export module storage;
 
 export class Storage {
 public:
-  // TODO Split constructor from DB connect into separated .Open method
-  Storage(std::string path, std::function<void(std::string)> log)
-  {
+  Storage(std::string path, std::function<void(std::string)> log) {
     this->log = log;
     log("Openning DB at: " + path);
     rocksdb::Options options;
@@ -33,10 +31,12 @@ public:
 
   void Close() {
     log("Closing database");
+    auto s = db->Close();
+    assert(s.ok());
     delete db;
   }
 
 private:
   std::function<void(std::string)> log;
-  rocksdb::DB* db;
+  rocksdb::DB *db;
 };
