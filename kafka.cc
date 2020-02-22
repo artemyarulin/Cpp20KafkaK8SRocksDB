@@ -1,10 +1,10 @@
+#include <atomic>
 #include <cassert>
 #include <cstdio>
 #include <functional>
 #include <map>
 #include <string>
 #include <thread>
-#include <atomic>
 
 #include "librdkafka/rdkafkacpp.h"
 
