@@ -1,0 +1,31 @@
+FROM ubuntu:19.10
+
+# Install nighly build of clang to have all the recent changes related to C++ 20 modules
+WORKDIR /clang
+RUN apt-get update && apt-get install -y wget gnupg2 && \
+    wget -qO - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
+    echo "deb http://apt.llvm.org/eoan/ llvm-toolchain-eoan main" > /etc/apt/sources.list.d/llvm.list && \
+    apt-get update && \
+    apt-get install -y clang && \
+    clang++ --version
+
+# Build librkafka from source as last recent ubuntu/debian is missing openssl lib and cannot be install from confluent repo
+WORKDIR /kafka
+RUN git clone https://github.com/edenhill/librdkafka && \
+    cd librdkafka && git checkout v1.3.0 && \
+    ./configure --install-deps && \
+    make -j 6 && make install
+
+# Build protobuff from source as well as ubuntu repo has rather old 3.6.1
+WORKDIR /protobuff
+RUN apt-get install -y autoconf automake libtool curl make g++ unzip && \
+    git clone https://github.com/protocolbuffers/protobuf.git && \
+    cd protobuf && \
+    git checkout v3.11.4 && \
+    git submodule update --init --recursive && \
+    ./autogen.sh && ./configure && \
+    make -j 6 && make install && ldconfig
+
+WORKDIR /src
+COPY Makefile *.cc *.h ./
+RUN make test && make app
