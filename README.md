@@ -3,7 +3,7 @@
 Experimenting with C++20 in writing stateful RocksDB Kafka consumer for Kubernetes.
 Never wrote C++ before. My main language is Go, so trying to mimic things I get used to do there
 
-- [Modules](https://docs.microsoft.com/en-us/cpp/cpp/modules-cpp) -  rather poor support across compilers and IDE. clang++ works, but complition involves many manual steps and even then crashing sometimes. But no headers files, nice
+- [Modules](https://docs.microsoft.com/en-us/cpp/cpp/modules-cpp) -  rather poor support across compilers and IDE. clang++ works, but complition involves many manual steps and even then [crashing sometimes](https://bugs.llvm.org/show_bug.cgi?id=45135). But no headers files, nice
 
 - [doctest](https://github.com/onqtam/doctest) - fast, simple utility for running unit tests. Allows Go test style organisation `app.cpp` and `app_test.cpp` or even one file for code and tests. Mast have for TDD
 
@@ -34,7 +34,6 @@ img    latest    480ccc17d485    Less than a second ago    8.96MB
 
 ## TODO
 
-- [ ] Kafka
 - [ ] Logger - glog looks nice with stacktraces and `CHECK` macros which is much better than assert (std::cout is not thread safe)
 - [ ] googletest - doctest is nice, but googletest is a mainstream, worth checking that at least
 - [ ] google benchmark - looks solid. Overall I guess adopting google set of C++ tools is not a bad idea
