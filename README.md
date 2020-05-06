@@ -51,3 +51,4 @@ After all experiments stack is the following:
 - googletest
 - googlebenchmark
 - fmt
+- gRPC for HTTP services
