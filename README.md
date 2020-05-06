@@ -1,7 +1,6 @@
 # Cpp20KafkaK8SRocksDB
 
 Experimenting with C++20 in writing stateful RocksDB Kafka consumer for Kubernetes.
-Never wrote C++ before. My main language is Go, so trying to mimic things I get used to do there
 
 - [Modules](https://docs.microsoft.com/en-us/cpp/cpp/modules-cpp) -  rather poor support across compilers and IDE. clang++ works, but complition involves many manual steps and even then [crashing sometimes](https://bugs.llvm.org/show_bug.cgi?id=45135). But no headers files, nice
 
@@ -42,3 +41,13 @@ img    latest    480ccc17d485    Less than a second ago    8.96MB
 - [ ] fmt string library is very much desired
 - [ ] Production build with optimisation. Check addr2line for stacktraces
 - [ ] Why on alpine it asks to add <functional> and <cassert> includes, but locally it works fine?
+
+## Status
+
+Abandoned as too soon. Clang and other compilers has rather low support of C++20 with often crashing compiler. 
+After all experiments stack is the following:
+- C++17
+- Bazel
+- googletest
+- googlebenchmark
+- fmt
